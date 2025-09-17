@@ -19,6 +19,10 @@
     --transition: all 0.3s ease;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
     line-height: 1.6;
@@ -143,6 +147,7 @@ body {
     font-weight: 600;
     transition: var(--transition);
     border: 2px solid transparent;
+    cursor: pointer;
 }
 
 .btn-primary {
@@ -388,6 +393,10 @@ body {
     padding: 3rem;
     text-align: center;
     color: var(--text-light);
+}
+
+.form-placeholder p {
+    margin-bottom: 1.5rem;
 }
 
 /* Footer */
