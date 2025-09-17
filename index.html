@@ -203,27 +203,25 @@
                 <div class="contact-content">
                     <div class="contact-form">
                         <h3 id="contact-form-title">Kontaktformular</h3>
-                        <div id="contact-form-placeholder" class="form-placeholder" hidden role="status" aria-live="polite">
-                            <p>Um das Kontaktformular zu laden, erlaube bitte Cookies für Statistiken oder Marketing.</p>
-                            <button type="button" class="btn btn-secondary" id="cookie-settings-button">Cookie-Einstellungen öffnen</button>
+                        <div class="cookieconsent-optout-marketing" style="text-align:center; padding:1em; background:#f5f5f5; border:1px solid #ccc;">
+                            <p>Um das Google Formular anzuzeigen, stimmen Sie bitte dem Laden von externen Inhalten zu.</p>
+                            <button onclick="Cookiebot.renew()">Cookie-Einstellungen ändern</button>
                         </div>
+                        <!-- Formular-Iframe wird erst nach Consent geladen -->
                         <iframe
-                            id="contact-form-iframe"
-                            src="https://docs.google.com/forms/d/1s8HnwOeR1ETfNYpWuu7nUYTSBWGprTF97wz-Fd9d_4Y/viewform?embedded=true"
-                            data-src="https://docs.google.com/forms/d/1s8HnwOeR1ETfNYpWuu7nUYTSBWGprTF97wz-Fd9d_4Y/viewform?embedded=true"
-                            width="100%"
-                            height="1400"
-                            frameborder="0"
-                            marginheight="0"
-                            marginwidth="0"
-                            title="Kontaktformular - Baumgartner Software UG"
-                            aria-label="Google Forms Kontaktformular"
-                            aria-describedby="contact-form-title"
-                            loading="lazy"
-                            data-cookieconsent="marketing"
-                            style="width:100%; max-width:100%; overflow-x:hidden; border:none;"
-                            >
-                            Laden...
+                        id="contact-form-iframe"
+                        data-src="https://docs.google.com/forms/d/1s8HnwOeR1ETfNYpWuu7nUYTSBWGprTF97wz-Fd9d_4Y/viewform?embedded=true"
+                        width="100%"
+                        height="1400"
+                        frameborder="0"
+                        marginheight="0"
+                        marginwidth="0"
+                        title="Kontaktformular - Baumgartner Software UG"
+                        aria-label="Google Forms Kontaktformular"
+                        aria-describedby="contact-form-title"
+                        loading="lazy"
+                        data-cookieconsent="marketing"
+                        style="width:100%; max-width:100%; overflow-x:hidden; border:none;">
                         </iframe>
                     </div>
                 </div>
