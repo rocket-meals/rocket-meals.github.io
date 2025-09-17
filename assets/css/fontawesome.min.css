@@ -1,0 +1,92 @@
+/*!
+ * Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ * Copyright 2024 Fonticons, Inc.
+ */
+
+/* Base FontAwesome classes */
+.fa, .fab, .fad, .fal, .far, .fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    font-family: inherit;
+}
+
+/* Icon definitions using better Unicode symbols */
+.fa-calendar-days::before {
+    content: "📅";
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.fa-clock::before {
+    content: "🕒";
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.fa-leaf::before {
+    content: "🌱";
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.fa-money-bill::before {
+    content: "💵";
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.fa-star::before {
+    content: "⭐";
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.fa-bell::before {
+    content: "🔔";
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.fa-mobile-screen::before {
+    content: "📱";
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.fa-rocket::before {
+    content: "🚀";
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.fa-utensils::before {
+    content: "🍽️";
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.fa-building::before {
+    content: "🏢";
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.fa-laptop::before {
+    content: "💻";
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+/* FontAwesome weight classes */
+.fas {
+    font-weight: 900;
+}
+
+.far {
+    font-weight: 400;
+}
+
+.fab {
+    font-weight: 400;
+}
+
+/* Ensure icons inherit color from parent when in white containers */
+.card-icon .fa,
+.card-icon .fas {
+    color: inherit;
+}

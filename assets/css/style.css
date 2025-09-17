@@ -188,6 +188,8 @@ body {
     justify-content: center;
     box-shadow: var(--shadow-lg);
     animation: float 6s ease-in-out infinite;
+    font-size: 1.5rem;
+    color: var(--primary-color);
 }
 
 .element-1 {
@@ -214,14 +216,7 @@ body {
     animation-delay: 4s;
 }
 
-.floating-element::before {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-}
 
-.element-1::before { content: "📱"; }
-.element-2::before { content: "🚀"; }
-.element-3::before { content: "💻"; }
 
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
@@ -287,10 +282,6 @@ body {
     justify-content: center;
     margin: 0 auto 1rem;
     font-size: 1.5rem;
-}
-
-.card-icon::before {
-    content: attr(data-icon);
 }
 
 .about-card h3 {
