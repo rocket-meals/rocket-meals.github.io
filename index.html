@@ -211,37 +211,42 @@
                             <button type="button" onclick="Cookiebot.renew()">Cookie-Einstellungen ändern</button>
                         </div>
                         <!-- Formular-Iframe wird erst nach Consent geladen -->
-                        <iframe
-                          id="contact-form-iframe"
-                          width="100%"
-                          frameborder="0"
-                          style="border:none; display:none;"
-                          title="Kontaktformular">
-                        </iframe>
+                        <div id="contact-form-container"></div>
 
                         <script>
                           (function() {
                             var formUrl = "https://docs.google.com/forms/d/1s8HnwOeR1ETfNYpWuu7nUYTSBWGprTF97wz-Fd9d_4Y/viewform?embedded=true";
-                            var iframe = document.getElementById("contact-form-iframe");
+                            var iframeContainer = document.getElementById("contact-form-container");
+                            var iframe = null;
                             var consentMessage = document.getElementById("contact-form-consent-message");
                             var loaded = false;
 
                             function showForm() {
+                              if (!iframeContainer) {
+                                return;
+                              }
                               if (!loaded) {
-                                iframe.src = formUrl;
+                                iframe = document.createElement("iframe");
+                                iframe.id = "contact-form-iframe";
+                                iframe.width = "100%";
                                 iframe.height = "1000";
+                                iframe.setAttribute("frameborder", "0");
+                                iframe.setAttribute("title", "Kontaktformular");
+                                iframe.style.border = "none";
+                                iframe.src = formUrl;
+                                iframeContainer.appendChild(iframe);
                                 loaded = true;
                               }
-                              iframe.style.display = "block";
                               if (consentMessage) {
                                 consentMessage.style.display = "none";
                               }
                             }
 
                             function hideForm() {
-                              iframe.style.display = "none";
-                              iframe.removeAttribute("src");
-                              iframe.removeAttribute("height");
+                              if (iframeContainer && iframe) {
+                                iframeContainer.removeChild(iframe);
+                                iframe = null;
+                              }
                               loaded = false;
                               if (consentMessage) {
                                 consentMessage.style.display = "block";
