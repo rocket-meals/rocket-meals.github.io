@@ -203,94 +203,223 @@
                 <div class="contact-content">
                     <div class="contact-form">
                         <h3 id="contact-form-title">Kontaktformular</h3>
-                        <div
-                          id="contact-form-consent-message"
-                          class="cookieconsent-optout-marketing"
-                          style="text-align:center; padding:1em; background:#f5f5f5; border:1px solid #ccc;">
-                            <p>Um das Google Formular anzuzeigen, stimmen Sie bitte dem Laden von externen Inhalten zu.</p>
-                            <button type="button" onclick="Cookiebot.renew()">Cookie-Einstellungen ändern</button>
+                        <div class="contact-form-content">
+                            <div
+                              id="contact-form-consent-message"
+                              class="contact-form-consent-message cookieconsent-optout-marketing">
+                                <p>Um das Google Formular anzuzeigen, stimmen Sie bitte dem Laden von externen Inhalten zu.</p>
+                                <button type="button" class="btn btn-secondary" data-cookie-action="open-settings">Cookie-Einstellungen ändern</button>
+                            </div>
+                            <!-- Formular-Iframe wird erst nach Consent geladen -->
+                            <div id="contact-form-container" aria-live="polite"></div>
                         </div>
-                        <!-- Formular-Iframe wird erst nach Consent geladen -->
-                        <div id="contact-form-container"></div>
-
-                        <script>
-                          (function() {
-                            var formUrl = "https://docs.google.com/forms/d/1s8HnwOeR1ETfNYpWuu7nUYTSBWGprTF97wz-Fd9d_4Y/viewform?embedded=true";
-                            var iframeContainer = document.getElementById("contact-form-container");
-                            var iframe = null;
-                            var consentMessage = document.getElementById("contact-form-consent-message");
-                            var loaded = false;
-
-                            function showForm() {
-                              if (!iframeContainer) {
-                                return;
-                              }
-                              if (!loaded) {
-                                iframe = document.createElement("iframe");
-                                iframe.id = "contact-form-iframe";
-                                iframe.width = "100%";
-                                iframe.height = "1000";
-                                iframe.setAttribute("frameborder", "0");
-                                iframe.setAttribute("title", "Kontaktformular");
-                                iframe.style.border = "none";
-                                iframe.src = formUrl;
-                                iframeContainer.appendChild(iframe);
-                                loaded = true;
-                              }
-                              if (consentMessage) {
-                                consentMessage.style.display = "none";
-                              }
-                            }
-
-                            function hideForm() {
-                              if (iframeContainer && iframe) {
-                                iframeContainer.removeChild(iframe);
-                                iframe = null;
-                              }
-                              loaded = false;
-                              if (consentMessage) {
-                                consentMessage.style.display = "block";
-                              }
-                            }
-
-                            function updateFormVisibility() {
-                              if (!window.Cookiebot || !Cookiebot.consents) {
-                                hideForm();
-                                return;
-                              }
-
-                              if (Cookiebot.consents.marketing) {
-                                showForm();
-                              } else {
-                                hideForm();
-                              }
-                            }
-
-                            window.addEventListener("CookiebotOnAccept", updateFormVisibility);
-                            window.addEventListener("CookiebotOnDecline", updateFormVisibility);
-                            window.addEventListener("CookiebotOnConsentReady", updateFormVisibility);
-
-                            if (document.readyState === "complete") {
-                              updateFormVisibility();
-                            } else {
-                              window.addEventListener("load", updateFormVisibility);
-                            }
-                          })();
-                        </script>
                     </div>
                     <div class="contact-form">
-                        <h3 id="contact-form-debug-title">Kontaktformular Debug</h3>
-                        <iframe
-                          id="contact-form-iframe-debug"
-                          title="Kontaktformular Debug"
-                          src="https://docs.google.com/forms/d/1s8HnwOeR1ETfNYpWuu7nUYTSBWGprTF97wz-Fd9d_4Y/viewform?embedded=true"
-                          width="100%"
-                          height="1000"
-                          frameborder="0"
-                          style="border: none;"
-                          allowfullscreen>
-                        </iframe>
+                        <h3 id="cookie-debug-title">Cookie-Debug-Panel</h3>
+                        <div class="contact-form-content">
+                            <p id="cookie-debug-summary" class="cookie-debug-summary" role="status" aria-live="polite">
+                                Cookie-Informationen werden geladen …
+                            </p>
+                            <ul class="cookie-debug-list" aria-labelledby="cookie-debug-title">
+                                <li class="cookie-debug-item">
+                                    <span class="cookie-debug-name"><i class="fa fa-lock"></i> Notwendig</span>
+                                    <span class="cookie-debug-status" data-cookie-category="necessary">Immer aktiv</span>
+                                </li>
+                                <li class="cookie-debug-item">
+                                    <span class="cookie-debug-name"><i class="fa fa-sliders"></i> Präferenzen</span>
+                                    <span class="cookie-debug-status" data-cookie-category="preferences">Noch keine Auswahl</span>
+                                </li>
+                                <li class="cookie-debug-item">
+                                    <span class="cookie-debug-name"><i class="fa fa-bar-chart"></i> Statistiken</span>
+                                    <span class="cookie-debug-status" data-cookie-category="statistics">Noch keine Auswahl</span>
+                                </li>
+                                <li class="cookie-debug-item">
+                                    <span class="cookie-debug-name"><i class="fa fa-bullhorn"></i> Marketing</span>
+                                    <span class="cookie-debug-status" data-cookie-category="marketing">Noch keine Auswahl</span>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-secondary cookie-debug-settings" data-cookie-action="open-settings">
+                                <i class="fa fa-sliders"></i>
+                                Cookie-Einstellungen öffnen
+                            </button>
+                            <p class="cookie-debug-hint">Diese Übersicht hilft dabei, Probleme mit dem eingebetteten Formular nachzuvollziehen.</p>
+                        </div>
                     </div>
+                    <script>
+                      (function() {
+                        var formUrl = "https://docs.google.com/forms/d/1s8HnwOeR1ETfNYpWuu7nUYTSBWGprTF97wz-Fd9d_4Y/viewform?embedded=true";
+                        var iframeContainer = document.getElementById("contact-form-container");
+                        var iframe = null;
+                        var consentMessage = document.getElementById("contact-form-consent-message");
+                        var summaryElement = document.getElementById("cookie-debug-summary");
+                        var statusElements = {
+                          necessary: document.querySelector('[data-cookie-category="necessary"]'),
+                          preferences: document.querySelector('[data-cookie-category="preferences"]'),
+                          statistics: document.querySelector('[data-cookie-category="statistics"]'),
+                          marketing: document.querySelector('[data-cookie-category="marketing"]')
+                        };
+                        var consentButtons = document.querySelectorAll('[data-cookie-action="open-settings"]');
+                        var loaded = false;
+
+                        var categoryLabels = {
+                          preferences: "Präferenzen",
+                          statistics: "Statistiken",
+                          marketing: "Marketing"
+                        };
+
+                        var statusTexts = {
+                          always: "Immer aktiv",
+                          granted: "Erlaubt",
+                          denied: "Abgelehnt",
+                          pending: "Noch keine Auswahl",
+                          unavailable: "Nicht verfügbar"
+                        };
+
+                        function openCookieSettings() {
+                          if (!window.Cookiebot) {
+                            return;
+                          }
+                          if (typeof window.Cookiebot.renew === "function") {
+                            window.Cookiebot.renew();
+                          } else if (typeof window.Cookiebot.show === "function") {
+                            window.Cookiebot.show();
+                          }
+                        }
+
+                        consentButtons.forEach(function(button) {
+                          button.addEventListener("click", openCookieSettings);
+                        });
+
+                        function setStatus(category, state) {
+                          var element = statusElements[category];
+                          if (!element) {
+                            return;
+                          }
+                          element.dataset.state = state;
+                          element.textContent = statusTexts[state] || statusTexts.unavailable;
+                        }
+
+                        function showForm() {
+                          if (!iframeContainer) {
+                            return;
+                          }
+                          if (!loaded) {
+                            iframe = document.createElement("iframe");
+                            iframe.id = "contact-form-iframe";
+                            iframe.width = "100%";
+                            iframe.height = "1000";
+                            iframe.loading = "lazy";
+                            iframe.setAttribute("frameborder", "0");
+                            iframe.setAttribute("title", "Kontaktformular");
+                            iframe.style.border = "none";
+                            iframe.src = formUrl;
+                            iframeContainer.appendChild(iframe);
+                            loaded = true;
+                          }
+                          if (consentMessage) {
+                            consentMessage.style.display = "none";
+                            consentMessage.setAttribute("aria-hidden", "true");
+                          }
+                        }
+
+                        function hideForm() {
+                          if (iframeContainer && iframe) {
+                            iframeContainer.removeChild(iframe);
+                            iframe = null;
+                          }
+                          loaded = false;
+                          if (consentMessage) {
+                            consentMessage.style.display = "block";
+                            consentMessage.setAttribute("aria-hidden", "false");
+                          }
+                        }
+
+                        function getConsent() {
+                          if (window.Cookiebot && window.Cookiebot.consent) {
+                            return window.Cookiebot.consent;
+                          }
+                          return null;
+                        }
+
+                        function updateFormVisibility(consent) {
+                          if (consent && consent.marketing) {
+                            showForm();
+                          } else {
+                            hideForm();
+                          }
+                        }
+
+                        function updateDebugPanel(consent) {
+                          if (!summaryElement) {
+                            return;
+                          }
+
+                          setStatus("necessary", "always");
+
+                          if (!window.Cookiebot) {
+                            summaryElement.textContent = "Cookiebot-Script wurde noch nicht geladen. Sobald es verfügbar ist, erscheinen hier die gewählten Einstellungen.";
+                            setStatus("preferences", "pending");
+                            setStatus("statistics", "pending");
+                            setStatus("marketing", "pending");
+                            return;
+                          }
+
+                          if (!consent || (typeof consent.preferences !== "boolean" && typeof consent.statistics !== "boolean" && typeof consent.marketing !== "boolean")) {
+                            summaryElement.textContent = "Cookiebot ist geladen. Bitte treffen Sie eine Auswahl im Cookie-Banner, um das Formular freizuschalten.";
+                            setStatus("preferences", "pending");
+                            setStatus("statistics", "pending");
+                            setStatus("marketing", "pending");
+                            return;
+                          }
+
+                          ["preferences", "statistics", "marketing"].forEach(function(category) {
+                            var isAllowed = Boolean(consent[category]);
+                            setStatus(category, isAllowed ? "granted" : "denied");
+                          });
+
+                          var summaryParts = [];
+                          var allowedCategories = [];
+                          var deniedCategories = [];
+
+                          Object.keys(categoryLabels).forEach(function(category) {
+                            if (consent[category]) {
+                              allowedCategories.push(categoryLabels[category]);
+                            } else {
+                              deniedCategories.push(categoryLabels[category]);
+                            }
+                          });
+
+                          if (consent.marketing) {
+                            summaryParts.push("Marketing-Cookies sind erlaubt – das Kontaktformular ist aktiv.");
+                          } else {
+                            summaryParts.push("Marketing-Cookies sind nicht erlaubt – das Kontaktformular bleibt deaktiviert.");
+                          }
+
+                          if (allowedCategories.length > 0) {
+                            summaryParts.push("Erlaubt: " + allowedCategories.join(", ") + ".");
+                          }
+
+                          if (deniedCategories.length > 0) {
+                            summaryParts.push("Abgelehnt: " + deniedCategories.join(", ") + ".");
+                          }
+
+                          summaryElement.textContent = summaryParts.join(" ");
+                        }
+
+                        function refreshState() {
+                          var consent = getConsent();
+                          updateFormVisibility(consent);
+                          updateDebugPanel(consent);
+                        }
+
+                        window.addEventListener("CookiebotOnConsentReady", refreshState);
+                        window.addEventListener("CookiebotOnAccept", refreshState);
+                        window.addEventListener("CookiebotOnDecline", refreshState);
+                        window.addEventListener("load", refreshState);
+
+                        refreshState();
+                      })();
+                    </script>
                 </div>
             </div>
         </section>
