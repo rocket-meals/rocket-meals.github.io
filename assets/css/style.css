@@ -377,11 +377,12 @@ body {
 
 .contact-form {
     background: var(--bg-light);
-    padding: 2rem;
+    padding: 0rem;
     border-radius: var(--border-radius);
 }
 
 .contact-form h3 {
+    padding: 2rem;
     margin-bottom: 1rem;
     color: var(--text-dark);
 }
