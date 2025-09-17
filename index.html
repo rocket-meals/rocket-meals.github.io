@@ -209,20 +209,20 @@
                         </div>
                         <!-- Formular-Iframe wird erst nach Consent geladen -->
                         <iframe
-                        id="contact-form-iframe"
-                        data-src="https://docs.google.com/forms/d/1s8HnwOeR1ETfNYpWuu7nUYTSBWGprTF97wz-Fd9d_4Y/viewform?embedded=true"
-                        width="100%"
-                        height="1400"
-                        frameborder="0"
-                        marginheight="0"
-                        marginwidth="0"
-                        title="Kontaktformular - Baumgartner Software UG"
-                        aria-label="Google Forms Kontaktformular"
-                        aria-describedby="contact-form-title"
-                        loading="lazy"
-                        data-cookieconsent="marketing"
-                        style="width:100%; max-width:100%; overflow-x:hidden; border:none;">
+                          id="contact-form-iframe"
+                          width="100%"
+                          frameborder="0"
+                          style="border:none;">
                         </iframe>
+
+                        <script>
+                          window.addEventListener("CookiebotOnAccept", function() {
+                            if (Cookiebot.consents.marketing) {
+                              document.getElementById("contact-form-iframe").src = "https://docs.google.com/forms/d/1s8HnwOeR1ETfNYpWuu7nUYTSBWGprTF97wz-Fd9d_4Y/viewform?embedded=true";
+                              document.getElementById("contact-form-iframe").height = "1400";
+                            }
+                          });
+                        </script>
                     </div>
                 </div>
             </div>
