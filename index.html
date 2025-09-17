@@ -1,37 +1,272 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rocket Meals</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            text-align: center;
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        h1 {
-            color: #ff6347;
-        }
-    </style>
+    <title>Rocket Meals - Die innovative Mensa-App für Studenten</title>
+    <meta name="description" content="Rocket Meals - Die mobile App für Studierendenwerke und Mensen. Digitaler Speiseplan, Vorbestellfunktion und Nährwertinformationen in einer App.">
+    <meta name="keywords" content="Mensa App, Studierendenwerk, Speiseplan, Vorbestellung, Studenten, Rocket Meals, Campus Food">
+    <meta name="author" content="Rocket Meals">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rocket-meals.de">
+    <meta property="og:title" content="Rocket Meals - Die innovative Mensa-App für Studenten">
+    <meta property="og:description" content="Rocket Meals - Die mobile App für Studierendenwerke und Mensen. Digitaler Speiseplan, Vorbestellfunktion und Nährwertinformationen in einer App.">
+    <meta property="og:image" content="/assets/images/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://rocket-meals.de">
+    <meta property="twitter:title" content="Rocket Meals - Die innovative Mensa-App für Studenten">
+    <meta property="twitter:description" content="Rocket Meals - Die mobile App für Studierendenwerke und Mensen. Digitaler Speiseplan, Vorbestellfunktion und Nährwertinformationen in einer App.">
+    <meta property="twitter:image" content="/assets/images/logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to Rocket Meals!</h1>
-        <p>Your go-to place for delicious meals.</p>
-    </div>
+    <header class="header">
+        <nav class="nav" role="navigation" aria-label="Hauptnavigation">
+            <div class="container">
+                <div class="nav-container">
+                    <div class="nav-logo">
+                        <h2>🚀 Rocket Meals</h2>
+                    </div>
+                    <ul class="nav-menu" role="menubar">
+                        <li class="nav-item" role="none">
+                            <a href="#home" class="nav-link" role="menuitem" aria-label="Zur Startseite">Start</a>
+                        </li>
+                        <li class="nav-item" role="none">
+                            <a href="#about" class="nav-link" role="menuitem" aria-label="Über die App erfahren">Features</a>
+                        </li>
+                        <li class="nav-item" role="none">
+                            <a href="#app" class="nav-link" role="menuitem" aria-label="App herunterladen">App</a>
+                        </li>
+                        <li class="nav-item" role="none">
+                            <a href="#contact" class="nav-link" role="menuitem" aria-label="Kontakt aufnehmen">Kontakt</a>
+                        </li>
+                    </ul>
+                    <div class="nav-toggle" id="mobile-menu" role="button" aria-label="Navigationsmenü öffnen" aria-expanded="false" aria-controls="nav-menu" tabindex="0">
+                        <span class="bar" aria-hidden="true"></span>
+                        <span class="bar" aria-hidden="true"></span>
+                        <span class="bar" aria-hidden="true"></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <h1 id="hero-title" class="hero-title">
+                            Die Zukunft der<br>
+                            <span class="highlight">Mensa-Experience</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Rocket Meals revolutioniert dein Mensa-Erlebnis. Speiseplan einsehen, 
+                            Nährwerte checken und Lieblingsgerichte vorbestellen - alles in einer App.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#app" class="btn btn-primary" aria-label="App herunterladen">App herunterladen</a>
+                            <a href="#about" class="btn btn-secondary" aria-label="Mehr über Features erfahren">Features entdecken</a>
+                        </div>
+                    </div>
+                    <div class="hero-visual" aria-hidden="true">
+                        <div class="floating-elements">
+                            <div class="floating-element element-1"></div>
+                            <div class="floating-element element-2"></div>
+                            <div class="floating-element element-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section" aria-labelledby="about-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="about-title">Warum Rocket Meals?</h2>
+                    <p>Entdecke die Features, die dein Mensa-Erlebnis auf das nächste Level bringen</p>
+                </div>
+                <div class="about-grid" role="region" aria-label="App Features">
+                    <div class="about-card">
+                        <div class="card-icon" data-icon="📅"></div>
+                        <h3>Digitaler Speiseplan</h3>
+                        <p>Sieh dir den aktuellen Speiseplan deiner Mensa an - übersichtlich und immer aktuell auf deinem Smartphone.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon" data-icon="⏰"></div>
+                        <h3>Vorbestellfunktion</h3>
+                        <p>Bestelle dein Lieblingsessen vor und spare Zeit in der Warteschlange. Einfach abholen und genießen.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon" data-icon="🥗"></div>
+                        <h3>Nährwertinformationen</h3>
+                        <p>Informiere dich über Kalorien, Allergene und Inhaltsstoffe - für eine bewusste Ernährung im Studium.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon" data-icon="💰"></div>
+                        <h3>Preistransparenz</h3>
+                        <p>Sieh dir Preise für Studenten, Mitarbeiter und Gäste auf einen Blick an - keine Überraschungen mehr.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon" data-icon="⭐"></div>
+                        <h3>Bewertungen</h3>
+                        <p>Bewerte Gerichte und lies Bewertungen anderer Studenten - finde deine neuen Lieblingsgerichte.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon" data-icon="🔔"></div>
+                        <h3>Push-Benachrichtigungen</h3>
+                        <p>Verpasse nie wieder dein Lieblingsgericht - erhalte Benachrichtigungen für neue Speisepläne.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- App Section -->
+        <section id="app" class="products section" aria-labelledby="app-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="app-title">Die Rocket Meals App</h2>
+                    <p>Verfügbar für iOS und Android - kostenlos für alle Studenten</p>
+                </div>
+                <div class="product-showcase">
+                    <article class="product-card featured" aria-labelledby="rocket-meals-app-title">
+                        <div class="product-image" aria-hidden="true">
+                            🍽️
+                        </div>
+                        <div class="product-content">
+                            <h3 id="rocket-meals-app-title">Rocket Meals</h3>
+                            <p class="product-subtitle">Die smarte Mensa-App für dein Studium</p>
+                            <p class="product-description">
+                                Rocket Meals bringt alle wichtigen Mensa-Informationen direkt auf dein Smartphone. 
+                                Von der Speiseplan-Ansicht bis zur Vorbestellung - alles was du für ein entspanntes 
+                                Mensa-Erlebnis brauchst, vereint in einer benutzerfreundlichen App.
+                            </p>
+                            <div class="product-features" role="list" aria-label="App-Features">
+                                <div class="feature" role="listitem">
+                                    <span>Digitaler Speiseplan</span>
+                                </div>
+                                <div class="feature" role="listitem">
+                                    <span>Vorbestellfunktion</span>
+                                </div>
+                                <div class="feature" role="listitem">
+                                    <span>Nährwertinformationen</span>
+                                </div>
+                                <div class="feature" role="listitem">
+                                    <span>Preisübersicht</span>
+                                </div>
+                                <div class="feature" role="listitem">
+                                    <span>Bewertungssystem</span>
+                                </div>
+                                <div class="feature" role="listitem">
+                                    <span>Push-Benachrichtigungen</span>
+                                </div>
+                            </div>
+                            <div class="hero-buttons">
+                                <a href="#" class="btn btn-primary" aria-label="App Store Download (Coming Soon)">
+                                    📱 App Store
+                                </a>
+                                <a href="#" class="btn btn-primary" aria-label="Google Play Download (Coming Soon)">
+                                    📱 Google Play
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section" aria-labelledby="contact-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="contact-title">Kontakt</h2>
+                    <p>Fragen zur App? Interesse an einer Partnerschaft? Wir freuen uns auf deine Nachricht!</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-form">
+                        <h3 id="contact-form-title">Kontaktformular</h3>
+                        <div class="form-placeholder">
+                            <p><strong>📝 Google Forms Integration</strong></p>
+                            <p>Hier wird das Google Forms Kontaktformular eingebettet.</p>
+                            <p>Füge die Google Forms URL in den iframe src ein:</p>
+                            <code>&lt;iframe src="YOUR_GOOGLE_FORMS_URL"&gt;&lt;/iframe&gt;</code>
+                            <br><br>
+                            <p>📧 <strong>Kontakt-E-Mail:</strong> info@rocket-meals.de</p>
+                            <p>📱 <strong>Support:</strong> support@rocket-meals.de</p>
+                        </div>
+                        <!-- 
+                        Uncomment and replace with your Google Forms URL:
+                        <iframe 
+                            src="https://docs.google.com/forms/d/YOUR_FORM_ID/viewform?embedded=true" 
+                            width="100%" 
+                            height="1200" 
+                            frameborder="0" 
+                            marginheight="0" 
+                            marginwidth="0"
+                            title="Kontaktformular - Rocket Meals"
+                            aria-label="Google Forms Kontaktformular"
+                            aria-describedby="contact-form-title"
+                            style="width:100%; max-width:100%; overflow-x:hidden; border:none;"
+                            >
+                            Laden...
+                        </iframe>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo" aria-label="Website Footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🚀 Rocket Meals</h3>
+                    <p>Die innovative Mensa-App für Studenten und Studierendenwerke</p>
+                    <p>Entwickelt mit ❤️ für die Student Community</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt</h4>
+                    <p><strong>E-Mail:</strong> <a href="mailto:info@rocket-meals.de" aria-label="E-Mail senden">info@rocket-meals.de</a></p>
+                    <p><strong>Support:</strong> <a href="mailto:support@rocket-meals.de" aria-label="Support E-Mail senden">support@rocket-meals.de</a></p>
+                    <p><strong>Website:</strong> <a href="https://rocket-meals.de" aria-label="Website besuchen">rocket-meals.de</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul role="list">
+                        <li role="listitem">📅 Digitaler Speiseplan</li>
+                        <li role="listitem">⏰ Vorbestellfunktion</li>
+                        <li role="listitem">🥗 Nährwertinformationen</li>
+                        <li role="listitem">⭐ Bewertungssystem</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Download</h4>
+                    <ul role="list">
+                        <li role="listitem"><a href="#" aria-label="iOS App Download (Coming Soon)">📱 iOS App (Coming Soon)</a></li>
+                        <li role="listitem"><a href="#" aria-label="Android App Download (Coming Soon)">📱 Android App (Coming Soon)</a></li>
+                        <li role="listitem"><a href="#contact" aria-label="Für Studierendenwerke">🏫 Für Studierendenwerke</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rocket Meals. Alle Rechte vorbehalten. | <a href="#" style="color: #bdc3c7;">Datenschutz</a> | <a href="#" style="color: #bdc3c7;">Impressum</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
