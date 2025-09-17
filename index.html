@@ -203,13 +203,18 @@
                 <div class="contact-content">
                     <div class="contact-form">
                         <h3 id="contact-form-title">Kontaktformular</h3>
-                        <div id="contact-form-placeholder" class="form-placeholder" hidden role="status" aria-live="polite">
-                            <p>Um das Kontaktformular zu laden, erlaube bitte Cookies für Statistiken oder Marketing.</p>
-                            <button type="button" class="btn btn-secondary" id="cookie-settings-button">Cookie-Einstellungen öffnen</button>
+                        <div id="contact-form-placeholder" class="form-placeholder" role="region" aria-live="polite" aria-label="Hinweis zu externen Inhalten">
+                            <p>Um das Kontaktformular von Google anzuzeigen, müssen externe Inhalte geladen werden. Dabei können personenbezogene Daten an Google übertragen werden.</p>
+                            <p>Mit einem Klick auf „Ich stimme zu und lade das Formular“ willigst du in die Datenübertragung ein.</p>
+                            <div class="placeholder-actions" role="group" aria-label="Aktionen zur Einwilligung">
+                                <button type="button" class="btn btn-primary" id="load-contact-form-button">Ich stimme zu und lade das Formular</button>
+                                <button type="button" class="btn btn-secondary" id="cookie-settings-button">Cookie-Einstellungen öffnen</button>
+                            </div>
+                            <p class="placeholder-note">Du kannst deine Entscheidung jederzeit über die Cookie-Einstellungen widerrufen.</p>
                         </div>
                         <iframe
                             id="contact-form-iframe"
-                            src="https://docs.google.com/forms/d/1s8HnwOeR1ETfNYpWuu7nUYTSBWGprTF97wz-Fd9d_4Y/viewform?embedded=true"
+                            src="about:blank"
                             data-src="https://docs.google.com/forms/d/1s8HnwOeR1ETfNYpWuu7nUYTSBWGprTF97wz-Fd9d_4Y/viewform?embedded=true"
                             width="100%"
                             height="1400"
@@ -221,7 +226,8 @@
                             aria-describedby="contact-form-title"
                             loading="lazy"
                             data-cookieconsent="marketing"
-                            style="width:100%; max-width:100%; overflow-x:hidden; border:none;"
+                            aria-hidden="true"
+                            style="display:none; width:100%; max-width:100%; overflow-x:hidden; border:none;"
                             >
                             Laden...
                         </iframe>

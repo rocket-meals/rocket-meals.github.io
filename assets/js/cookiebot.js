@@ -1,4 +1,6 @@
 (function () {
+    var MANUAL_CONSENT_KEY = 'rocketMealsContactFormConsent';
+
     function loadCookiebot() {
         if (document.getElementById('Cookiebot')) {
             return;
@@ -20,6 +22,34 @@
         }
     }
 
+    function hasManualConsent() {
+        try {
+            return Boolean(window.localStorage && window.localStorage.getItem(MANUAL_CONSENT_KEY) === 'true');
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function storeManualConsent() {
+        try {
+            if (window.localStorage) {
+                window.localStorage.setItem(MANUAL_CONSENT_KEY, 'true');
+            }
+        } catch (error) {
+            // Ignore storage errors (e.g. private browsing)
+        }
+    }
+
+    function clearManualConsent() {
+        try {
+            if (window.localStorage) {
+                window.localStorage.removeItem(MANUAL_CONSENT_KEY);
+            }
+        } catch (error) {
+            // Ignore storage errors (e.g. private browsing)
+        }
+    }
+
     function initContactFormConsentHandling() {
         document.addEventListener('DOMContentLoaded', function () {
             var contactIframe = document.getElementById('contact-form-iframe');
@@ -30,6 +60,7 @@
             var formUrl = contactIframe.getAttribute('data-src');
             var placeholder = document.getElementById('contact-form-placeholder');
             var settingsButton = document.getElementById('cookie-settings-button');
+            var loadButton = document.getElementById('load-contact-form-button');
 
             if (settingsButton) {
                 settingsButton.addEventListener('click', function () {
@@ -39,15 +70,23 @@
                 });
             }
 
+            if (loadButton) {
+                loadButton.addEventListener('click', function () {
+                    storeManualConsent();
+                    showForm();
+                });
+            }
+
             function showForm() {
                 if (formUrl && contactIframe.src !== formUrl) {
                     contactIframe.src = formUrl;
                 }
                 contactIframe.style.display = '';
-                contactIframe.removeAttribute('aria-hidden');
+                contactIframe.setAttribute('aria-hidden', 'false');
 
                 if (placeholder) {
                     placeholder.hidden = true;
+                    placeholder.setAttribute('aria-hidden', 'true');
                 }
             }
 
@@ -60,25 +99,26 @@
 
                 if (placeholder) {
                     placeholder.hidden = false;
+                    placeholder.removeAttribute('aria-hidden');
                 }
             }
 
             function updateContactFormVisibility() {
+                var hasConsent = false;
+
                 if (window.Cookiebot && window.Cookiebot.consent) {
                     var consent = window.Cookiebot.consent;
-                    var allowForm = Boolean(
+                    hasConsent = Boolean(
                         consent.marketing ||
                         consent.statistics ||
                         consent.preferences
                     );
+                }
 
-                    if (allowForm) {
-                        showForm();
-                    } else {
-                        showPlaceholder();
-                    }
-                } else {
+                if (hasConsent || hasManualConsent()) {
                     showForm();
+                } else {
+                    showPlaceholder();
                 }
             }
 
@@ -86,7 +126,10 @@
 
             window.addEventListener('CookiebotOnConsentReady', updateContactFormVisibility);
             window.addEventListener('CookiebotOnAccept', updateContactFormVisibility);
-            window.addEventListener('CookiebotOnDecline', updateContactFormVisibility);
+            window.addEventListener('CookiebotOnDecline', function () {
+                clearManualConsent();
+                updateContactFormVisibility();
+            });
         });
     }
 
