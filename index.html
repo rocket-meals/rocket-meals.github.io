@@ -203,25 +203,74 @@
                 <div class="contact-content">
                     <div class="contact-form">
                         <h3 id="contact-form-title">Kontaktformular</h3>
-                        <div class="cookieconsent-optout-marketing" style="text-align:center; padding:1em; background:#f5f5f5; border:1px solid #ccc;">
+                        <div
+                          id="contact-form-consent-message"
+                          class="cookieconsent-optout-marketing"
+                          style="text-align:center; padding:1em; background:#f5f5f5; border:1px solid #ccc;">
                             <p>Um das Google Formular anzuzeigen, stimmen Sie bitte dem Laden von externen Inhalten zu.</p>
-                            <button onclick="Cookiebot.renew()">Cookie-Einstellungen ändern</button>
+                            <button type="button" onclick="Cookiebot.renew()">Cookie-Einstellungen ändern</button>
                         </div>
                         <!-- Formular-Iframe wird erst nach Consent geladen -->
                         <iframe
                           id="contact-form-iframe"
                           width="100%"
                           frameborder="0"
-                          style="border:none;">
+                          style="border:none; display:none;"
+                          title="Kontaktformular">
                         </iframe>
 
                         <script>
-                          window.addEventListener("CookiebotOnAccept", function() {
-                            if (Cookiebot.consents.marketing) {
-                              document.getElementById("contact-form-iframe").src = "https://docs.google.com/forms/d/1s8HnwOeR1ETfNYpWuu7nUYTSBWGprTF97wz-Fd9d_4Y/viewform?embedded=true";
-                              document.getElementById("contact-form-iframe").height = "1000";
+                          (function() {
+                            var formUrl = "https://docs.google.com/forms/d/1s8HnwOeR1ETfNYpWuu7nUYTSBWGprTF97wz-Fd9d_4Y/viewform?embedded=true";
+                            var iframe = document.getElementById("contact-form-iframe");
+                            var consentMessage = document.getElementById("contact-form-consent-message");
+                            var loaded = false;
+
+                            function showForm() {
+                              if (!loaded) {
+                                iframe.src = formUrl;
+                                iframe.height = "1000";
+                                loaded = true;
+                              }
+                              iframe.style.display = "block";
+                              if (consentMessage) {
+                                consentMessage.style.display = "none";
+                              }
                             }
-                          });
+
+                            function hideForm() {
+                              iframe.style.display = "none";
+                              iframe.removeAttribute("src");
+                              iframe.removeAttribute("height");
+                              loaded = false;
+                              if (consentMessage) {
+                                consentMessage.style.display = "block";
+                              }
+                            }
+
+                            function updateFormVisibility() {
+                              if (!window.Cookiebot || !Cookiebot.consents) {
+                                hideForm();
+                                return;
+                              }
+
+                              if (Cookiebot.consents.marketing) {
+                                showForm();
+                              } else {
+                                hideForm();
+                              }
+                            }
+
+                            window.addEventListener("CookiebotOnAccept", updateFormVisibility);
+                            window.addEventListener("CookiebotOnDecline", updateFormVisibility);
+                            window.addEventListener("CookiebotOnConsentReady", updateFormVisibility);
+
+                            if (document.readyState === "complete") {
+                              updateFormVisibility();
+                            } else {
+                              window.addEventListener("load", updateFormVisibility);
+                            }
+                          })();
                         </script>
                     </div>
                 </div>
