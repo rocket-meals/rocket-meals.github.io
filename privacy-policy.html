@@ -9,14 +9,14 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://rocket-meals.de/datenschutz.html">
+    <meta property="og:url" content="https://rocket-meals.de/privacy-policy.html">
     <meta property="og:title" content="Datenschutzerklärung – Rocket Meals">
     <meta property="og:description" content="Erfahren Sie, wie Rocket Meals mit personenbezogenen Daten umgeht und Ihre Privatsphäre schützt.">
     <meta property="og:image" content="/assets/images/logo.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://rocket-meals.de/datenschutz.html">
+    <meta property="twitter:url" content="https://rocket-meals.de/privacy-policy.html">
     <meta property="twitter:title" content="Datenschutzerklärung – Rocket Meals">
     <meta property="twitter:description" content="Alles über Datenschutz, Hosting und Kontaktformular auf der Rocket Meals Website.">
     <meta property="twitter:image" content="/assets/images/logo.png">
@@ -30,6 +30,7 @@
 
     <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="alternate" type="text/markdown" href="privacy-policy.md">
 </head>
 <body>
     <header class="header">
@@ -53,7 +54,7 @@
                             <a href="index.html#contact" class="nav-link" role="menuitem">Kontakt</a>
                         </li>
                         <li class="nav-item" role="none">
-                            <a href="datenschutz.html" class="nav-link" role="menuitem" aria-current="page">Datenschutz</a>
+                            <a href="privacy-policy.html" class="nav-link" role="menuitem" aria-current="page">Datenschutz</a>
                         </li>
                     </ul>
                     <div class="nav-toggle" id="mobile-menu" role="button" aria-label="Navigationsmenü öffnen" aria-expanded="false" aria-controls="nav-menu" tabindex="0">
@@ -120,7 +121,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Rocket Meals. Alle Rechte vorbehalten. | <a href="datenschutz.html" style="color: #bdc3c7;">Datenschutz</a> | <a href="#" style="color: #bdc3c7;">Impressum</a></p>
+                <p>&copy; 2024 Rocket Meals. Alle Rechte vorbehalten. | <a href="privacy-policy.html" style="color: #bdc3c7;">Datenschutz</a> | <a href="#" style="color: #bdc3c7;">Impressum</a></p>
             </div>
         </div>
     </footer>
@@ -130,7 +131,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             const container = document.getElementById('privacy-content');
 
-            fetch('datenschutz.md')
+            fetch('privacy-policy.md')
                 .then(function (response) {
                     if (!response.ok) {
                         throw new Error('Die Datenschutzerklärung konnte nicht geladen werden.');
