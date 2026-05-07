@@ -365,6 +365,27 @@ body {
     font-weight: bold;
 }
 
+.product-app-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 22px;
+    object-fit: cover;
+}
+
+.product-info-note {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.btn-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
 /* Contact Section */
 .contact {
     background: var(--bg-white);
