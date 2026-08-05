@@ -4,7 +4,7 @@
 
 **Firmenname:** Baumgartner Software UG (haftungsbeschränkt)
 
-**Adresse:** Bernhardstraße 20, 49413
+**Adresse:** Bernhardstraße 20, 49413 Dinklage
 
 **Telefon:** +49 170 2215430
 
@@ -25,7 +25,7 @@
 ### Contact Information
 - **Phone:** +49 170 2215430
 - **Email:** info@baumgartner-software.de
-- **Address:** Bernhardstraße 20, 49413
+- **Address:** Bernhardstraße 20, 49413 Dinklage
 
 ### Legal Details
 - **Company Name:** Baumgartner Software UG (haftungsbeschränkt)
